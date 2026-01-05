@@ -136,7 +136,7 @@ export default function HomePage() {
         <Image
           alt="Hero background"
           className="object-cover "
-          src="https://drive.google.com/thumbnail?id=1d2rhw3or-NrEBZNr8uVbPfNi0B4c-5w3"
+          src="https://i.pinimg.com/736x/b3/91/9f/b3919f7b0b340cb3499f06097df5bf5d.jpg"
           fill
         />
         {/* <div className="relative z-10 text-center px-4">
