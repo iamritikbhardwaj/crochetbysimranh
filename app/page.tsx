@@ -1,6 +1,8 @@
 // app/page.tsx
+"use client"
 import Image from 'next/image';
 import { ShoppingBag, Search, Heart, ChevronLeft, ChevronRight, Star, StarHalf, Plus } from 'lucide-react';
+import { useState } from 'react';
 
 interface Product {
   id: number;
@@ -19,40 +21,48 @@ const products: Product[] = [
     id: 1,
     name: 'Sunflower Pot',
     category: 'Flower',
-    price: 24.00,
-    rating: 4.5,
+    price: 1799.00,
+    rating: 4.9,
     reviews: 42,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDeCzP6Dg_ETFCo2e8WXdsTwNnWaWYvtwKHecaXINoCrUHUUl3hW5QHeEIobttTxfK6bqPTwXRESVJFiEodiGsQcOxW6eNfxfQTx7hp7y85pcMkIUb3mSmjiST_i_43k1sb16FcYln4xxR0qBC6BKCXCWirXBM-zulYKdVer_YcbX1FH9H_br7UX7fQt-wLfVKxT-S2wV3tA6sGryEAE6MUK2WvE-sHjqhqKpIRAuv1YxMLzuPxRHKNGR6S-COL11lKaX9fiw3uP_iV',
+    image: 'https://drive.google.com/thumbnail?id=1c6pGYmmlVnggp4dtOfxkFMKgk1p29uLS',
     badge: 'New'
   },
   {
     id: 2,
     name: 'Cozy Bear Plush',
     category: 'Teddy',
-    price: 35.00,
+    price: 1299.00,
     rating: 5,
     reviews: 18,
-    image: 'https://drive.google.com/thumbnail?id=12Y2n0t_H_KiW8HHRI1RpUTgKJFRxHE0T'
+    image: 'https://drive.google.com/thumbnail?id=1zS2HaTa4DKA7oP0TmkWyjsuYWku5t5Ev'
   },
   {
     id: 3,
-    name: 'Macramé Wall Art',
+    name: 'Deadpool tapestry',
     category: 'Tapestry',
-    price: 45.00,
-    originalPrice: 55.00,
+    price: 3499.00,
     rating: 4,
     reviews: 7,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPr3PBmyH1bErtx3MuFk3zGXDCdxJoqtL8SxiuvQsd249R0Fr2u6EVkuJ_mrtU-3F4Dm-KZHP6RqnBOrKgk3TkBsfPP0lYf7y05kC24dPrH9r52xVNK2OdIkpfd6G7p7yrQCGA9VNkfYsISpkpQSFDw6CpwKe8bNxKRgHoW9V726FCMtVTDCPgG-JMAV3hq9DicBtaQapq8v2xnLahAQUKWCciR-DUN7YHXjaWCfBRi7tPrysfEboMsr9MN65eZSDzj9hC-ISA98ut',
+    image: 'https://drive.google.com/thumbnail?id=1OTNGRilQgHsLsC90-jJAx1mGXQJrv-jd',
     badge: 'Sale'
   },
   {
     id: 4,
-    name: 'Baby Octopus',
+    name: 'Baby Penguin',
     category: 'Animals',
-    price: 18.00,
+    price: 1899.00,
     rating: 5,
     reviews: 124,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCjIbB8MmXN0JNuMOYg97hMXyFf4Ep2DyVFmMUIg6bqcsSpkOQQ4C4z56R92NgAWket5-FTAaHcmIqjl4PrUlMy__xZOYH8tzmlHugnKuwDg6zAoaRtuaFjnvveJrAMXmixCfVZp2__PbFeZA_DBllUvKKm35c2WET4Jdn6DdeakpXsxm9GPg-Mo-9vK0cLf3OtjAVsk6yU-YzdjeZqiS7Y2hXrG_k1PtfJltYrSn0uxXXTXTy3gtoSNKTC1hygWquRv9tExP_Jq9jC'
+    image: 'https://i.pinimg.com/1200x/f3/d4/b0/f3d4b01fa85f017d4fd60dd13097694c.jpg'
+  },
+  {
+    id: 5,
+    name: 'Spiderman key chain',
+    category: 'Key Chain',
+    price: 399.00,
+    rating: 5,
+    reviews: 152,
+    image: 'https://i.pinimg.com/736x/bb/f3/ef/bbf3ef7030c950824c01ed7709055355.jpg'
   }
 ];
 
@@ -86,6 +96,7 @@ const renderStars = (rating: number) => {
 };
 
 export default function HomePage() {
+  const [currentCategory, setCurrentCategory] = useState("all")
   return (
     <div className="bg-stone-50 text-gray-800 min-h-screen flex flex-col">
       {/* Navigation */}
@@ -106,7 +117,11 @@ export default function HomePage() {
               <a
                 key={category.name}
                 className="px-6 py-2 rounded-full bg-white hover:bg-[#D4A373] hover:text-white transition-all shadow-sm font-medium flex items-center gap-2 group"
-                href="#"
+                // onClick={() => {
+                //   setCurrentCategory(category.name)
+                //   console.log(currentCategory)
+                // }}
+                href='#products'
               >
                 <span className="text-lg">{category.icon}</span>
                 {category.name}
@@ -120,21 +135,21 @@ export default function HomePage() {
       <header className="relative h-[400px] flex items-center justify-center bg-gray-100 overflow-hidden">
         <Image
           alt="Hero background"
-          className="object-cover opacity-60"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3yo3UQHmHYkc36vt83rIBjDM9hQUKeP73kiTewBtE5UT1-Vg2oINXRLBE2pmn3IALQCVBCPCb6VPerXgCkWHwt-WIUSFUP0IvgbKtDiFJjyx-JF5wPFkmMPw9_MS19GFCtXPuI3xGnUPEvFQHxPKKcgqT7e5-FjoUPfqVuj2md1d1EunsfI43Nx4wEIN_dIFJZhboVIfv3jjOX8gGV45Y5z3pu4HBVcbzs6accOX-Ec-R5UwsEZoq2qWtPrSk7X707bzaAgBobxDj"
+          className="object-cover "
+          src="https://drive.google.com/thumbnail?id=1d2rhw3or-NrEBZNr8uVbPfNi0B4c-5w3"
           fill
         />
-        <div className="relative z-10 text-center px-4">
+        {/* <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-md text-stone-800 font-serif">
             Handmade with Love
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-stone-700 font-light">
             Discover unique crochet treasures for your home
           </p>
-          <button className="bg-[#D4A373] text-white px-8 py-3 rounded-md hover:bg-[#c08d5d] transition shadow-lg text-lg">
+          <a href='#products' className="bg-[#D4A373] text-white px-8 py-3 rounded-md hover:bg-[#c08d5d] transition shadow-lg text-lg">
             Shop Now
-          </button>
-        </div>
+          </a>
+        </div> */}
       </header>
 
       {/* Main Content */}
@@ -155,11 +170,11 @@ export default function HomePage() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <section id='products' className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-lg shadow-sm hover:shadow-md transition group overflow-hidden border border-gray-100"
+              className={`bg-white ${(currentCategory === "all" || currentCategory === product.category) ? "" : "hidden"}} rounded-lg shadow-sm hover:shadow-md transition group overflow-hidden border border-gray-100`}
             >
               <div className="relative h-64 overflow-hidden bg-gray-100">
                 <Image
@@ -195,7 +210,7 @@ export default function HomePage() {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <span className="text-xl font-bold text-gray-900">
-                      ${product.price.toFixed(2)}
+                      ₹{product.price.toFixed(2)}
                     </span>
                     {product.originalPrice && (
                       <span className="text-sm text-gray-400 line-through">
@@ -210,7 +225,7 @@ export default function HomePage() {
               </div>
             </div>
           ))}
-        </div>
+        </section>
       </main>
 
       {/* Footer */}
@@ -277,7 +292,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-stone-800 mt-12 pt-8 text-center text-xs opacity-60 flex flex-col md:flex-row justify-between items-center gap-2">
-            <span>© 2023 CrochetbySimran. All rights reserved.</span>
+            <span>© 2024 CrochetbySimran. All rights reserved.</span>
             <a className="hover:text-[#D4A373] transition-colors duration-300" href="https://portfolio-site-pearl-xi.vercel.app/">
               Made by Ritik Singh
             </a>
