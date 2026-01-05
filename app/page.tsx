@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { ShoppingBag, Search, Heart, ChevronLeft, ChevronRight, Star, StarHalf, Plus } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface Product {
   id: number;
@@ -136,7 +137,7 @@ export default function HomePage() {
         <Image
           alt="Hero background"
           className="object-cover "
-          src="https://i.pinimg.com/736x/b3/91/9f/b3919f7b0b340cb3499f06097df5bf5d.jpg"
+          src="https://i.pinimg.com/736x/29/69/0a/29690a686933be5eb53e7c544c62be0d.jpg"
           fill
         />
         {/* <div className="relative z-10 text-center px-4">
@@ -218,9 +219,9 @@ export default function HomePage() {
                       </span>
                     )}
                   </div>
-                  <button className="w-8 h-8 bg-[#D4A373] rounded-full flex items-center justify-center text-white hover:bg-[#c08d5d] transition">
+                  <Link href={"/instagram"} className="w-8 h-8 bg-[#D4A373] rounded-full flex items-center justify-center text-white hover:bg-[#c08d5d] transition">
                     <Plus className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

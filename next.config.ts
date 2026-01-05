@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/instagram',
+        destination: 'https://ig.me/m/crochetbysimran_',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
